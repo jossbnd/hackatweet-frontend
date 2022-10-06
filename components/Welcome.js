@@ -3,6 +3,10 @@ import styles from '../styles/Welcome.module.css';
 import { useState } from 'react';
 import { Modal } from 'antd';
 
+import { useDispatch, useSelector } from 'react-redux';
+import { login } from '../reducers/user';
+
+
 function Welcome() {
     const [isModalVisible, setIsModalVisible] = useState(false);
 
@@ -14,6 +18,11 @@ function Welcome() {
     const [signInIsClicked, setSignInIsClicked] = useState(false)
     const [signInUsername, setSignInUsername] = useState('');
     const [signInPassword, setSignInPassword] = useState('');
+
+    const [errorMessage, setErrorMessage] = useState('');
+
+    const dispatch = useDispatch();
+    const user = useSelector((state) => state.user.value);
 
     // FONCTIONS
     const handleSignUp = () => {
@@ -34,13 +43,21 @@ function Welcome() {
         })
         .then(res => res.json())
         .then(data => {
-            console.log(data);
-            setIsModalVisible(false);
-            setSignUpIsClicked(false);
-    
-            setSignUpFirstname('');
-            setSignUpUsername('');
-            setSignUpPassword('');
+            if (data.result) {
+
+                dispatch(login({ token: data.token, username: data.username }));
+
+                setIsModalVisible(false);
+                setSignUpIsClicked(false);
+        
+                setSignUpFirstname('');
+                setSignUpUsername('');
+                setSignUpPassword('');
+
+                setErrorMessage('');
+            } else {
+                setErrorMessage(data.error);
+            }
         })
       };
 
@@ -52,12 +69,20 @@ function Welcome() {
         })
         .then(res => res.json())
         .then(data => {
-            console.log(data);
-            setIsModalVisible(false);
-            setSignInIsClicked(false);
-    
-            setSignInUsername('');
-            setSignInPassword('');
+            if (data.result) {
+
+                dispatch(login({ token: data.token, username: data.username }));
+
+                setIsModalVisible(false);
+                setSignInIsClicked(false);
+        
+                setSignInUsername('');
+                setSignInPassword('');
+
+                setErrorMessage('');
+            } else {
+                setErrorMessage(data.error);
+            }
         })
       };
     
@@ -72,6 +97,8 @@ function Welcome() {
 
         setSignInUsername('');
         setSignInPassword('');
+
+        setErrorMessage('');
     };
 
 
@@ -90,6 +117,7 @@ function Welcome() {
         <input className={styles.logInput} placeholder='Firstname' onChange={(el) => setSignUpFirstname(el.target.value)} value={signUpFirstname}/>
         <input className={styles.logInput} placeholder='Username' onChange={(el) => setSignUpUsername(el.target.value)} value={signUpUsername}/>
         <input type='password' className={styles.logInput} placeholder='Password' onChange={(el) => setSignUpPassword(el.target.value)} value={signUpPassword}/>
+        <span style={{color: 'white', fontWeight: 'lighter'}}><i>{errorMessage}</i></span>
         <button className={styles.connectionWindowbutton} onClick={handleSignUpSubmit}>SIGN UP</button>
     </div>
     }
@@ -103,11 +131,11 @@ function Welcome() {
         <h3 className={styles.modalH3}>Connect to Hackatweet</h3>
         <input className={styles.logInput} placeholder='Username' onChange={(el) => setSignInUsername(el.target.value)} value={signInUsername}/>
         <input type='password' className={styles.logInput} placeholder='Password' onChange={(el) => setSignInPassword(el.target.value)} value={signInPassword}/>
+        <span style={{color: 'white', fontWeight: 'lighter'}}><i>{errorMessage}</i></span>
         <button className={styles.connectionWindowbutton} onClick={handleSignInSubmit}>SIGN IN</button>
     </div>
 
     }
-    
 
     return (
         <div className={styles.main}>
