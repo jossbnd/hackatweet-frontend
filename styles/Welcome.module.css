@@ -25,6 +25,7 @@
 
 .small {
     width: 50px;
+    margin-bottom: 5px;
 }
 
 .rightContent {
@@ -53,29 +54,86 @@
     color: white;
 }
 
-.logIn {
+.signUp {
     background-color: rgb(29, 155, 240);
     border: solid 1px white;
 }
 
-.logIn:hover {
+.signUp:hover {
     background-color: rgb(8, 108, 189);
 }
 
-.logOut {
+.signIn {
     background-color: #0d1117;
     border: solid 1px grey;
     color: rgb(29, 155, 240);
 }
 
-.logOut:hover {
+.signIn:hover {
     background-color: #181f2d;
 }
 
 /* MODAL */
 
-.connection {
-    display: flex;
-    background-color: blue;
+.modalContainer {
+    background-color: #212734;
     position: absolute;
+    border-radius: 20px;
+}
+
+.connectionWindow {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    margin: 5px;
+}
+
+.cancelButtonContainer {
+    width: 100%;
+    text-align: end;
+    margin-right: 15px;
+}
+
+.cancelButton {
+    background-color: #212734;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+.modalH3 {
+    font-size: 20px;
+    color: white;
+}
+
+.logInput {
+    border: solid 1px white;
+    border-radius: 2px;
+    background-color: #212734;
+    color: white;
+    padding: 5px;
+    margin: 5px;
+    width: 40%;
+    height: 30px;
+}
+
+.logInput::placeholder {
+    color: grey;
+}
+
+.connectionWindowbutton{
+    background-color: white;
+    color: black;
+    border: none;
+    border-radius: 20px;
+    width: 40%;
+    height: 25px;
+    cursor: pointer;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.connectionWindowbutton:hover {
+    background-color: rgb(212, 205, 205);
 }
