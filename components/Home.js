@@ -1,7 +1,27 @@
 import React from "react";
 import styles from "../styles/Home.module.css";
 
-export default function home() {
+import Tweet from './Tweet';
+
+import { useState, useEffect } from 'react';
+
+export default function Home() {
+
+  const [tweets, setTweets] = useState([]);
+
+  useEffect(() => {
+    fetch('http://localhost:3000/tweets')
+    .then(res => res.json())
+    .then(data => {
+      setTweets(data.tweets);
+    })
+  }, [])
+
+  const tweetsData = tweets.map((tweet, i) => {
+    return <Tweet key={i} {...tweet} />
+  })
+
+
   return (
     <div className={styles.container}>
       <div className={styles.blockLeft}>
@@ -28,7 +48,9 @@ export default function home() {
       </div>
       <div className={styles.blockCenter}>
         <div className={styles.newmessage}>Zone news message</div>
-        <div className={styles.zonemessage}>Zone message déja posté</div>
+        <div className={styles.zonemessage}>
+          {tweetsData}
+        </div>
       </div>
       <div className={styles.blockRight}>block droite</div>
     </div>

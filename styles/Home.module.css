@@ -16,21 +16,21 @@
 }
 
 .blockCenter {
-  border: 1px solid black;
+  border: 1px solid grey;
   background-color: #212734;
   width: 50%;
   height: 100%;
 }
 
 .blockRight {
-  border-right: 1px solid black;
+  border-right: 1px solid grey;
   background-color: #212734;
   width: 30%;
   height: 100%;
 }
 
 .newmessage {
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid grey;
   background-color: #212734;
   height: 30%;
   width: 100%;

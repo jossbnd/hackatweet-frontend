@@ -1,8 +1,9 @@
 .tweetContainer {
     background-color: #212734;
-    height: 20%;
+    height: 40%;
     width: 100%;
     border: 1px solid grey;
+    color: white;
 }
 
 .tweetHeader {
@@ -17,4 +18,8 @@
 
 .userName {
     color: gray;
+}
+
+.heart {
+    cursor: pointer;
 }
