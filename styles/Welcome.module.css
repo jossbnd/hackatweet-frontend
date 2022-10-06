@@ -1,0 +1,81 @@
+.main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    background-color: #0d1117;
+}
+
+.leftContent {
+    background-image: url('../public/images/background.png');
+    background-size: cover;
+    width: 35%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.logo {
+    width: 200px;
+    transform: rotate(180deg);
+}
+
+.small {
+    width: 50px;
+}
+
+.rightContent {
+    width: 65%;
+    height: 100%;
+    padding: 20px;
+    color: white;
+}
+
+.h1 {
+    width: 350px;
+    font-size: 70px;
+    margin-bottom: 30px;
+}
+
+.h3 {
+    font-size: 30px;
+    margin-top: 0;
+}
+
+.button {
+    border-radius: 20px;
+    width: 150px;
+    height: 40px;
+    cursor: pointer;
+    color: white;
+}
+
+.logIn {
+    background-color: rgb(29, 155, 240);
+    border: solid 1px white;
+}
+
+.logIn:hover {
+    background-color: rgb(8, 108, 189);
+}
+
+.logOut {
+    background-color: #0d1117;
+    border: solid 1px grey;
+    color: rgb(29, 155, 240);
+}
+
+.logOut:hover {
+    background-color: #181f2d;
+}
+
+/* MODAL */
+
+.connection {
+    display: flex;
+    background-color: blue;
+    position: absolute;
+}
