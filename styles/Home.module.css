@@ -1,22 +1,88 @@
-.main {
+.container {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  background-color: #212734;
+}
+
+.blockLeft {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  padding: 4rem 0;
+  justify-content: space-between;
+  border-left: 1px solid grey;
+  background-color: #212734;
+  width: 20%;
+  height: 100%;
 }
 
-.title {
-  line-height: 1.15;
-  font-size: 4rem;
+.blockCenter {
+  border: 1px solid black;
+  background-color: #212734;
+  width: 50%;
+  height: 100%;
 }
 
-.title a {
-  color: #0070f3;
-  text-decoration: none;
+.blockRight {
+  border-right: 1px solid black;
+  background-color: #212734;
+  width: 30%;
+  height: 100%;
 }
 
-.title a:hover, .title a:focus, .title a:active {
-  text-decoration: underline;
+.newmessage {
+  border-bottom: 1px solid black;
+  background-color: #212734;
+  height: 30%;
+  width: 100%;
+}
+
+.zonemessage {
+  background-color: #212734;
+  height: 70%;
+  width: 100%;
+}
+
+.logo {
+  width: 200px;
+  transform: rotate(180deg);
+  margin-top: 15px;
+  margin-left: 20px;
+}
+
+.small {
+  width: 50px;
+  margin-bottom: 5px;
+}
+
+.disconnectedButton {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 25px;
+  margin-left: 15px;
+}
+
+.blockhaut {
+  display: flex;
+}
+
+.pseudo {
+  padding-top: 5px;
+}
+
+.username {
+}
+
+.avatar {
+  height: 50px;
+  width: 50px;
+  border-radius: 50px;
+}
+
+.button {
+  margin-top: 1px;
+  width: 40%;
+}
+
+.blocktopright {
+  margin-left: 5px;
 }
