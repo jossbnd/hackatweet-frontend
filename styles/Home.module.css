@@ -22,13 +22,6 @@
   height: 100%;
 }
 
-.blockRight {
-  /* border-right: 1px solid grey; */
-  background-color: #212734;
-  width: 30%;
-  height: 100%;
-}
-
 /* NEW MESSAGE CONTAINER */
 .newmessage {
   border-bottom: 1px solid grey;
@@ -162,4 +155,27 @@
 
 .username {
   color: grey;
+}
+
+/* BLOCK RIGHT */
+
+.blockRight {
+  background-color: #212734;
+  width: 28%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.blockRightHeader {
+  color: white;
+  margin: 10px;
+  width: 100%;
+  font-size: 24px;
+
+}
+
+.trendsContainer {
+  margin: 10px;
+  width: 100%;
 }

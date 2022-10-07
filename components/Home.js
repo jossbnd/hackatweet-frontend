@@ -2,6 +2,7 @@ import React from "react";
 import styles from "../styles/Home.module.css";
 
 import Tweet from './Tweet';
+import Trend from './Trend';
 
 import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from 'react';
@@ -10,9 +11,11 @@ import { logout } from "../reducers/user";
 export default function Home() {
 
   const [tweets, setTweets] = useState([]);
+  const [trends, setTrends] = useState([]);
   const [message, setMessage] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const [refresh, setRefresh] = useState(0);
+
 
   const liked = useSelector((state) => state.liked.value);
   const user = useSelector((state) => state.user.value);
@@ -24,8 +27,29 @@ export default function Home() {
     .then(res => res.json())
     .then(data => {
       setTweets(data.tweets);
+      setTrends(findHashtags(data.tweets));
+      
     })
   }, [refresh]);
+
+  const findHashtags = (tweets) => {
+    const messageContainer = tweets.map(tweet => tweet.message).join(' ');
+    const hashtags = messageContainer.match(/#\w+/gi);
+    let trendsCopy = [];
+
+    if (!hashtags) {
+      return;
+    }
+
+    for (let hashtag of hashtags) {
+      if (trendsCopy.some(trend => trend.hashtag === hashtag)) {
+        trendsCopy.forEach(trend => trend.hashtag === hashtag && trend.count++);
+      } else {
+        trendsCopy.push({ hashtag: hashtag, count: 1})
+      }
+    }
+    return trendsCopy;
+  }
 
   const handleTweet = () => {
     fetch(`http://localhost:3000/tweets/new/${user.token}`, {
@@ -59,7 +83,12 @@ export default function Home() {
     return <Tweet key={i} {...tweet} isLiked={isLiked} refreshInTweet={refreshInTweet} isMine={isMine} />
   })
 
-  console.log(user);
+  let trendsData;
+  if (trends) {
+    trendsData = trends.map((trend, i) => {
+      return <Trend key={i} {...trend} />;
+    });
+  }
 
   return (
     <div className={styles.container}>
@@ -101,7 +130,12 @@ export default function Home() {
           {tweetsData}
         </div>
       </div>
-      <div className={styles.blockRight}>block droite</div>
+      <div className={styles.blockRight}>
+        <h3 className={styles.blockRightHeader}>Trends</h3>
+        <div className={styles.trendsContainer}>
+          {trendsData}
+        </div>        
+      </div>
     </div>
   );
 }
