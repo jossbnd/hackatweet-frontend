@@ -3,12 +3,15 @@ import styles from "../styles/Home.module.css";
 
 import Tweet from './Tweet';
 
+import { useSelector } from "react-redux";
 import { useState, useEffect } from 'react';
 
 export default function Home() {
 
   const [tweets, setTweets] = useState([]);
   const [message, setMessage] = useState('');
+
+  const liked = useSelector((state) => state.liked.value);
 
   useEffect(() => {
     fetch('http://localhost:3000/tweets')
@@ -19,7 +22,8 @@ export default function Home() {
   }, [])
 
   const tweetsData = tweets.map((tweet, i) => {
-    return <Tweet key={i} {...tweet} />
+    const isLiked = liked.some(likedTweet => likedTweet.token === tweet.token)
+    return <Tweet key={i} {...tweet} isLiked={isLiked} />
   })
 
 

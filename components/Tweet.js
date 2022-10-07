@@ -9,7 +9,18 @@ function Tweet(props) {
 const dispatch = useDispatch()
 
 const handleLike = (props) => {
-  dispatch(addTweet(props))
+  if (props.isLiked) {
+    dispatch(removeTweet(props));
+
+  } else {
+    dispatch(addTweet(props));
+    
+  }
+}
+
+let heartStyle = {};
+if (props.isLiked) {
+  heartStyle = {color: "red"}
 }
 
   return (
@@ -22,7 +33,7 @@ const handleLike = (props) => {
         </div>
         <p className={styles.message}>{props.message}</p>
         <div className={styles.likesContainer}>
-            <FontAwesomeIcon onClick={() => handleLike(props)} className={styles.heart} icon={faHeart} /><span> {props.likes}</span>
+            <FontAwesomeIcon style={heartStyle} onClick={() => handleLike(props)} className={styles.heart} icon={faHeart} /><span> {props.likes}</span>
         </div>
     </div>
   );
