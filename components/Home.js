@@ -8,6 +8,7 @@ import { useState, useEffect } from 'react';
 export default function Home() {
 
   const [tweets, setTweets] = useState([]);
+  const [message, setMessage] = useState('');
 
   useEffect(() => {
     fetch('http://localhost:3000/tweets')
@@ -47,7 +48,16 @@ export default function Home() {
         </div>
       </div>
       <div className={styles.blockCenter}>
-        <div className={styles.newmessage}>Zone news message</div>
+        <div className={styles.newmessage}>
+          <h3 className={styles.newMessageHeader}>Home</h3>
+          <div className={styles.newInputContainer}>
+            <input className={styles.newInput} onChange={(el) => setMessage(el.target.value)} value={message} placeholder="What's up?"/>
+            <div className={styles.newInputBottom}>
+              <span style={{color: "white", fontSize:"14px"}}>0/280</span>
+              <button className={styles.newTweetButton}>Tweet</button>
+            </div>
+          </div>
+        </div>
         <div className={styles.zonemessage}>
           {tweetsData}
         </div>

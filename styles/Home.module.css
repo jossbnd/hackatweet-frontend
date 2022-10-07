@@ -29,6 +29,7 @@
   height: 100%;
 }
 
+/* NEW MESSAGE CONTAINER */
 .newmessage {
   border-bottom: 1px solid grey;
   background-color: #212734;
@@ -36,6 +37,62 @@
   width: 100%;
 }
 
+.newMessageHeader {
+  color: white;
+  margin: 10px;
+  width: 100%;
+  height: 30%;
+}
+
+.newInputContainer {
+  display: flex;
+  width: 100%;
+  height: 70%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.newInput {
+  width: 80%;
+  height: 30px;
+  background-color: #212734;
+  border: none;
+  border-bottom: solid 1px grey;
+  color: white;
+}
+
+.newInputBottom {
+  width: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+
+.newInput::placeholder {
+  font-weight: bold;
+}
+
+.newTweetButton {
+  margin-left: 10px;
+  border-radius: 20px;
+  width: 100px;
+  height: 30px;
+  cursor: pointer;
+  color: white;
+  background-color: rgb(29, 155, 240);
+  border: none;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.newTweetButton:hover {
+  border: 1px solid white;
+}
+
+
+/* TWEETS CONTAINER */
 .zonemessage {
   background-color: #212734;
   height: 70%;
