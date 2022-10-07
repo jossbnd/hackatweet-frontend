@@ -45,7 +45,7 @@ function Welcome() {
         .then(data => {
             if (data.result) {
 
-                dispatch(login({ token: data.token, username: data.username }));
+                dispatch(login({ token: data.token, username: data.username, firstname: data.firstname }));
 
                 setIsModalVisible(false);
                 setSignUpIsClicked(false);
