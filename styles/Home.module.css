@@ -42,12 +42,13 @@
   margin: 10px;
   width: 100%;
   height: 30%;
+  font-size: 24px;
 }
 
 .newInputContainer {
   display: flex;
   width: 100%;
-  height: 70%;
+  height: 50%;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
@@ -60,6 +61,7 @@
   border: none;
   border-bottom: solid 1px grey;
   color: white;
+  margin-bottom: 5px;
 }
 
 .newInputBottom {
@@ -95,9 +97,23 @@
 /* TWEETS CONTAINER */
 .zonemessage {
   background-color: #212734;
-  height: 70%;
+  height: 68%;
   width: 100%;
-  overflow-y: scroll;
+  overflow-y: auto;
+  
+}
+
+.zonemessage::-webkit-scrollbar {
+  width: 10px; /* width of the entire scrollbar */
+}
+
+.zonemessage::-webkit-scrollbar-track {
+  background:#212734;/* color of the tracking area */
+}
+
+.zonemessage::-webkit-scrollbar-thumb {
+  background-color: grey; /* color of the scroll thumb */
+  border-radius: 20px; /* roundness of the scroll thumb */
 }
 
 .logo {

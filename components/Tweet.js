@@ -14,7 +14,7 @@ const handleLike = (props) => {
 
   } else {
     dispatch(addTweet(props));
-    
+
   }
 }
 
@@ -33,7 +33,7 @@ if (props.isLiked) {
         </div>
         <p className={styles.message}>{props.message}</p>
         <div className={styles.likesContainer}>
-            <FontAwesomeIcon style={heartStyle} onClick={() => handleLike(props)} className={styles.heart} icon={faHeart} /><span> {props.likes}</span>
+            <FontAwesomeIcon style={heartStyle} onClick={() => handleLike(props)} className={styles.heart} icon={faHeart} /><span> {props.likes + (props.isLiked && 1)}</span>
         </div>
     </div>
   );

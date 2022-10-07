@@ -29,8 +29,24 @@
 }
 
 .message {
-    margin-left: 10px;
+    margin: 10px;
+    overflow-wrap: break-word;
+    height: 30%;
+    overflow-y: auto;
 }
+
+.message::-webkit-scrollbar {
+    width: 5px; /* width of the entire scrollbar */
+  }
+  
+.message::-webkit-scrollbar-track {
+    background:#212734;/* color of the tracking area */
+  }
+  
+.message::-webkit-scrollbar-thumb {
+    background-color: grey; /* color of the scroll thumb */
+    border-radius: 20px; /* roundness of the scroll thumb */
+  }
 
 
 .heart {

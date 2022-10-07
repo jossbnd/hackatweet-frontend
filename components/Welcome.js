@@ -70,8 +70,9 @@ function Welcome() {
         .then(res => res.json())
         .then(data => {
             if (data.result) {
+                console.log(data);
 
-                dispatch(login({ token: data.token, username: data.username }));
+                dispatch(login({ token: data.token, username: data.username, firstname: data.firstname }));
 
                 setIsModalVisible(false);
                 setSignInIsClicked(false);
