@@ -2,7 +2,7 @@
     background-color: #212734;
     height: 40%;
     width: 100%;
-    border: 1px solid grey;
+    border-bottom: 1px solid grey;
     color: white;
 }
 
@@ -13,13 +13,27 @@
 }
 
 .avatar {
-    height: 20px;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    margin: 10px;
+}
+
+.firstName {
+    font-weight: bold;
 }
 
 .userName {
     color: gray;
+    margin: 5px;
 }
+
+.message {
+    margin-left: 10px;
+}
+
 
 .heart {
     cursor: pointer;
+    margin-left: 10px;
 }

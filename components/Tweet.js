@@ -8,12 +8,12 @@ function Tweet(props) {
     <div className={styles.tweetContainer}>
         <div className={styles.tweetHeader}>
             <img className={styles.avatar} src='./images/avatar.png' alt='avatar' />
-            <span>{props.firstname}</span>
-            <span className={styles.userName}>{props.username}</span><span> - </span><span>5 hours ago</span>
+            <span className={styles.firstName}>{props.firstname}</span>
+            <span className={styles.userName}>{props.username}</span><span className={styles.hourAgo}> - 5 hours ago</span>
         </div>
         <p className={styles.message}>{props.message}</p>
         <div className={styles.likesContainer}>
-            <FontAwesomeIcon className={styles.heart} icon={faHeart} /><span>{props.likes}</span>
+            <FontAwesomeIcon className={styles.heart} icon={faHeart} /><span> {props.likes}</span>
         </div>
     </div>
   );

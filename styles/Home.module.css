@@ -9,21 +9,21 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  border-left: 1px solid grey;
+  border-right: 1px solid grey;
   background-color: #212734;
   width: 20%;
   height: 100%;
 }
 
 .blockCenter {
-  border: 1px solid grey;
+  border-right: 1px solid grey;
   background-color: #212734;
   width: 50%;
   height: 100%;
 }
 
 .blockRight {
-  border-right: 1px solid grey;
+  /* border-right: 1px solid grey; */
   background-color: #212734;
   width: 30%;
   height: 100%;
@@ -40,6 +40,7 @@
   background-color: #212734;
   height: 70%;
   width: 100%;
+  overflow-y: scroll;
 }
 
 .logo {
