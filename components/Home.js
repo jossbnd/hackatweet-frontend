@@ -49,9 +49,14 @@ export default function Home() {
     dispatch(logout());
   }
 
+  const refreshInTweet = () => {
+    setRefresh(refresh+1);
+  }
+
   const tweetsData = tweets.map((tweet, i) => {
-    const isLiked = liked.some(likedTweet => likedTweet.token === tweet.token)
-    return <Tweet key={i} {...tweet} isLiked={isLiked} />
+    const isLiked = liked.some(likedTweet => likedTweet.token === tweet.token);
+    const isMine = tweet.username === user.username;
+    return <Tweet key={i} {...tweet} isLiked={isLiked} refreshInTweet={refreshInTweet} isMine={isMine} />
   })
 
   console.log(user);
