@@ -12,11 +12,18 @@ const [date, setDate] = useState(Date.now());
 
 const dateDiff = Math.round((date - new Date(props.date)) / 1000 / 60 / 60) > 0 ? Math.round((date - new Date(props.date)) / 1000 / 60 / 60) + " hours" : "few minutes";
 
-const handleLike = (props) => {
-  if (props.isLiked) {
-    dispatch(removeTweet(props));
-  } else {
-    dispatch(addTweet(props));
+const handleLike = () => {
+  if (!props.isLiked) {
+    fetch(`http://localhost:3000/tweets/like/${props.token}`, {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+    })
+    .then(res => res.json())
+    .then(data => {
+      if (data.result) {
+        props.refreshInTweet();
+      }
+    })
   }
 }
 
@@ -49,7 +56,7 @@ if (props.isLiked) {
         </div>
         <p className={styles.message}>{props.message}</p>
         <div className={styles.likesContainer}>
-            <FontAwesomeIcon style={heartStyle} onClick={() => handleLike(props)} className={styles.heart} icon={faHeart} /><span> {props.likes + (props.isLiked && 1)}</span>
+            <FontAwesomeIcon style={heartStyle} onClick={() => handleLike()} className={styles.heart} icon={faHeart} /><span> {props.likes}</span>
             {props.isMine && <FontAwesomeIcon onClick={handleDelete} className={styles.trash} icon={faTrash} />}
         </div>
     </div>

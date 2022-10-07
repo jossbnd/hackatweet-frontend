@@ -15,9 +15,8 @@ export default function Home() {
   const [message, setMessage] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const [refresh, setRefresh] = useState(0);
+  const [liked, setLiked] = useState([]);
 
-
-  const liked = useSelector((state) => state.liked.value);
   const user = useSelector((state) => state.user.value);
 
   const dispatch = useDispatch();
@@ -30,7 +29,20 @@ export default function Home() {
       setTrends(findHashtags(data.tweets));
       
     })
+
+    fetch(`http://localhost:3000/users/likedTweets/${user.token}`)
+    .then(res => res.json())
+    .then(data => {
+      if (data.result) {
+        setLiked(data.likedTweets);
+        console.log(data.likedTweets)
+
+      }
+    })
+
   }, [refresh]);
+
+
 
   const findHashtags = (tweets) => {
     const messageContainer = tweets.map(tweet => tweet.message).join(' ');
@@ -78,7 +90,10 @@ export default function Home() {
   }
 
   const tweetsData = tweets.map((tweet, i) => {
-    const isLiked = liked.some(likedTweet => likedTweet.token === tweet.token);
+    let isLiked = false;
+    if (liked) {
+      isLiked = liked.some(likedTweet => likedTweet.token === tweet.token);
+    }
     const isMine = tweet.username === user.username;
     return <Tweet key={i} {...tweet} isLiked={isLiked} refreshInTweet={refreshInTweet} isMine={isMine} />
   })
