@@ -1,8 +1,17 @@
 import styles from '../styles/Tweet.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
+import { addTweet, removeTweet } from '../reducers/liked';
+import { useDispatch, useSelector } from 'react-redux';
 
 function Tweet(props) {
+
+const dispatch = useDispatch()
+
+const handleLike = (props) => {
+  dispatch(addTweet(props))
+}
+
   return (
 
     <div className={styles.tweetContainer}>
@@ -13,7 +22,7 @@ function Tweet(props) {
         </div>
         <p className={styles.message}>{props.message}</p>
         <div className={styles.likesContainer}>
-            <FontAwesomeIcon className={styles.heart} icon={faHeart} /><span> {props.likes}</span>
+            <FontAwesomeIcon onClick={() => handleLike(props)} className={styles.heart} icon={faHeart} /><span> {props.likes}</span>
         </div>
     </div>
   );
